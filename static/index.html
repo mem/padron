@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es" ng-app="padronApp">
+<head>
+  <meta charset="utf-8">
+  <title>Consultar padrón electoral</title>
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.9.0/ui-bootstrap-tpls.min.js"></script>
+  <script src="js/controllers.js"></script>
+</head>
+<body ng-controller="PadronCtrl">
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="navbar navbar-default" role="navigation">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">#VotoCR</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Otros sitios <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="http://www.tse.go.cr/elecciones.htm">TSE</a></li>
+            <li><a href="http://www.ojoalvoto.com/">Ojo al Voto</a></li>
+          </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/info.html"><span class="glyphicon glyphicon-question-sign"></span></a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+
+
+    <div class="col-md-4">
+      <form class="form-horizontal" ng-submit="search()">
+        <fieldset>
+          <legend>Consultar padrón electoral</legend>
+
+          <div class="form-group">
+            <label class="col-xs-3 col-s-3 col-md-4 control-label" for="cedula">Cédula</label>
+            <div class="col-xs-6 col-s-6 col-md-5">
+              <input id="cedula" name="cedula" type="search"
+              placeholder="123456789" class="form-control input-md"
+              required="" ng-model="cedula">
+              <p class="help-block">Número de cédula a consultar,
+              deben ser nueve dígitos.</p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="submit"></label>
+            <div class="col-md-4">
+              <button id="submit" name="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Buscar</button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <div class="col-md-8" ng-init="found=-1;">
+      <div ng-show="found==1">
+        <div class="panel panel-primary" ng-repeat="persona in personas">
+          <div class="panel-heading">
+            <strong>{{persona.Nombre}} {{persona.Apellido1}}
+              {{persona.Apellido2}}</strong>
+          </div>
+          <div class="panel-body">
+            <table class="table">
+              <tbody>
+              <tr>
+                <td>Cédula:</td>
+                <td>{{persona.Cedula}}</td>
+              </tr>
+              <tr>
+                <td>Centro de votación:</td>
+                <td><a href="{{persona.Url}}">{{persona.Centro}}</a></td>
+              </tr>
+              <tr>
+                <td>Dirección:</td>
+                <td>{{persona.Direccion}}<br>
+                  {{persona.Provincia}}<br>
+                  {{persona.Canton}}<br>
+                  {{persona.Distrito}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div ng-show="found==0">
+        <p>No se encontraron datos.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
