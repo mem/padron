@@ -5,6 +5,7 @@
   <title>Consultar padrón electoral</title>
   <link rel="stylesheet" href="css/app.css">
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.9.0/ui-bootstrap-tpls.min.js"></script>
   <script src="js/controllers.js"></script>
@@ -43,7 +44,6 @@
         </ul>
       </div><!--/.nav-collapse -->
     </div>
-
 
     <div class="col-md-4">
       <form class="form-horizontal" ng-submit="search()">
@@ -104,6 +104,14 @@
         <p>No se encontraron datos.</p>
       </div>
     </div>
+  </div>
+</div>
+<div class="navbar navbar-fixed-bottom">
+  <div class="btn-group">
+    <button class="btn btn-default disabled">Compartir:</button>
+    <a class="btn btn-default" href="http://www.facebook.com/sharer.php?u=http://votocr.org/&t=VotoCR"><i class="fa fa-thumbs-o-up fa-lg fb"></i></a>
+    <a class="btn btn-default" href="http://twitter.com/share?url=http://votocr.org/&text=VotoCR"><i class="fa fa-twitter fa-lg tw"></i></a>
+    <a class="btn btn-default" href="https://plus.google.com/share?url=http://votocr.org/"><i class="fa fa-google-plus fa-lg google"></i></a>
   </div>
 </div>
 </body>
