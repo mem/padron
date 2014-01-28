@@ -26,8 +26,13 @@ parser : $(parser_SRC) $(LIBS)
 	$(T) GO '$@'
 	$(Q) go build padron/parser
 
-$(LIBS) :
-	$(T) LIB '$@'
+src/%/.__pkg_src__ :
+	$(T) GOGET '$*'
+	$(Q) go get '$*'
+	$(Q) touch '$@'
+
+$(LIBS) : pkg/$(GOOS)_$(GOARCH)/%.a : src/%/.__pkg_src__
+	$(T) GOLIB '$@'
 	$(Q) go install $(patsubst pkg/$(GOOS)_$(GOARCH)/%.a,%,$@)
 
 pkgs :
