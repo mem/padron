@@ -27,6 +27,20 @@ padronApp.controller('PadronCtrl', function ($scope, $http) {
         cedula = cedula.substring(1);
         break;
       }
+    } else {
+      var items = cedula.split(/[ -]+/);
+      items[0] = items[0].replace(/^0+/, "");
+      switch (items.length) {
+      case 2:
+      case 3:
+        for (var i = 1; i < items.length; i++) {
+          while (items[i].length < 4) {
+            items[i] = "0" + items[i]
+          }
+        }
+        cedula = items.join("")
+        break;
+      }
     }
     $http.get('persona/' + cedula).success(function(data) {
       $scope.personas = [ data ];
