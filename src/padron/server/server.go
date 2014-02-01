@@ -70,6 +70,7 @@ func GetPersona(w http.ResponseWriter, r *http.Request) error {
 		Provincia string
 		Canton    string
 		Distrito  string
+		Mesa      string
 	}
 
 	err = dbmap.SelectOne(&persona,
@@ -78,6 +79,7 @@ func GetPersona(w http.ResponseWriter, r *http.Request) error {
 			personas.nombre AS Nombre,
 			personas.apellido_1 AS Apellido1,
 			personas.apellido_2 AS Apellido2,
+			juntas.id AS mesa,
 			centros.nombre AS centro,
 			centros.direccion AS direccion,
 			centros.url AS url,
