@@ -3,6 +3,12 @@ var padronApp = angular.module('padronApp', ['ui.bootstrap'])
 // angular.module('myModule', ['ui.bootstrap']);
 
 padronApp.controller('PadronCtrl', function ($scope, $http) {
+  $scope.reset = function() {
+    if ($scope.found == 1) {
+      $scope.cedula = "";
+    }
+  };
+
   $scope.search = function() {
     var cedula = this.cedula.trim();
     if (cedula.match(/^\d+$/)) {
