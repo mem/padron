@@ -48,6 +48,7 @@ padronApp.controller('PadronCtrl', function ($scope, $http) {
         break;
       }
     }
+    $scope.cedula = cedula;
     $http.get('persona/' + cedula).success(function(data) {
       $scope.personas = [ data ];
       $scope.found = 1;
