@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 	"padron/server"
 	"log"
@@ -11,8 +12,10 @@ func main() {
 	http.Handle("/", http.FileServer(http.Dir("static")))
 	log.Print("Trying port 80")
 	err := http.ListenAndServe("0.0.0.0:80", nil)
-	if err != nil {
-		log.Print("Trying port 8080")
-		log.Fatal(http.ListenAndServe("0.0.0.0:8080", nil))
+	for port := 8080; err != nil && port < 8090; port++ {
+		log.Printf("Trying port %d", port)
+		addr := fmt.Sprintf("0.0.0.0:%d", port)
+		err = http.ListenAndServe(addr, nil)
 	}
+	log.Fatal(err)
 }
