@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"net/http"
-	"padron/server"
 	"log"
+	"net/http"
+	"server"
 )
 
 func main() {

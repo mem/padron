@@ -2,6 +2,7 @@ package model
 
 import (
 	"database/sql"
+
 	"github.com/coopernurse/gorp"
 	_ "github.com/mattn/go-sqlite3"
 )
@@ -14,7 +15,6 @@ type Persona struct {
 	Apellido1  string `db:"apellido_1"`
 	Apellido2  string `db:"apellido_2"`
 	Genero     int    `db:"genero"`
-	DistritoId int64  `db:"distrito_id"`
 }
 
 type Provincia struct {
@@ -34,12 +34,19 @@ type Distrito struct {
 	CantonId int64  `db:"canton_id"`
 }
 
-type Centro struct {
+type DistritoElectoral struct {
 	Id         int64  `db:"id"`
 	Nombre     string `db:"nombre"`
-	Direccion  string `db:"direccion"`
-	Url        string `db:"url"`
 	DistritoId int64  `db:"distrito_id"`
+}
+
+type Centro struct {
+	Id                  int64  `db:"id"`
+	Tipo                string `db:"tipo"`
+	Nombre              string `db:"nombre"`
+	Direccion           string `db:"direccion"`
+	Url                 string `db:"url"`
+	DistritoElectoralId int64  `db:"distrito_electoral_id"`
 }
 
 type Junta struct {
@@ -63,6 +70,8 @@ func InitDb() (*gorp.DbMap, error) {
 	dbmap.AddTableWithName(Junta{}, "juntas").SetKeys(false, "Id")
 	dbmap.AddTableWithName(Centro{}, "centros").SetKeys(true, "Id")
 	dbmap.AddTableWithName(Distrito{}, "distritos").SetKeys(false, "Id")
+	dbmap.AddTableWithName(DistritoElectoral{}, "distritos_electorales").
+		SetKeys(false, "Id")
 	dbmap.AddTableWithName(Canton{}, "cantones").SetKeys(false, "Id")
 	dbmap.AddTableWithName(Provincia{}, "provincias").SetKeys(false, "Id")
 	dbmap.AddTableWithName(ItemPadron{}, "padron").

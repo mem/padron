@@ -3,10 +3,11 @@ package server
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/gorilla/mux"
 	"log"
+	"model"
 	"net/http"
-	"padron/model"
+
+	"github.com/gorilla/mux"
 )
 
 func RegisterHandlers() {
@@ -87,16 +88,15 @@ func GetPersona(w http.ResponseWriter, r *http.Request) error {
 			cantones.nombre AS canton,
 			provincias.nombre AS provincia
 		FROM
-			padron
+			(SELECT * FROM personas WHERE cedula=?) AS personas
 		JOIN
-			personas ON personas.id = padron.persona_id,
+			padron ON padron.persona_id = personas.cedula,
 			juntas ON juntas.id = padron.junta_id,
 			centros ON centros.id = juntas.centro_id,
-			distritos ON distritos.id = centros.distrito_id,
+			distritos_electorales ON distritos_electorales.id = centros.distrito_electoral_id,
+			distritos ON distritos.id = distritos_electorales.distrito_id,
 			cantones ON cantones.id = distritos.canton_id,
-			provincias ON provincias.id = cantones.provincia_id
-		WHERE
-			personas.cedula=?`,
+			provincias ON provincias.id = cantones.provincia_id`,
 		id)
 
 	if err != nil {

@@ -1,0 +1,56 @@
+{
+	"version": 0,
+	"dependencies": [
+		{
+			"importpath": "github.com/coopernurse/gorp",
+			"repository": "https://github.com/coopernurse/gorp",
+			"revision": "9cd2b5ef5b82fde4e7c51776ac3f94398b8af076",
+			"branch": "develop"
+		},
+		{
+			"importpath": "github.com/gorilla/context",
+			"repository": "https://github.com/gorilla/context",
+			"revision": "1c83b3eabd45b6d76072b66b746c20815fb2872d",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/gorilla/mux",
+			"repository": "https://github.com/gorilla/mux",
+			"revision": "26a6070f849969ba72b72256e9f14cf519751690",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/mattn/go-sqlite3",
+			"repository": "https://github.com/mattn/go-sqlite3",
+			"revision": "5510da399572b4962c020184bb291120c0a412e2",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/tealeg/xlsx",
+			"repository": "https://github.com/tealeg/xlsx",
+			"revision": "e16993b205897ff3cf1715e7fa8d0b9c4c847dce",
+			"branch": "master"
+		},
+		{
+			"importpath": "golang.org/x/text/encoding",
+			"repository": "https://go.googlesource.com/text",
+			"revision": "cf4986612c83df6c55578ba198316d1684a9a287",
+			"branch": "master",
+			"path": "/encoding"
+		},
+		{
+			"importpath": "golang.org/x/text/encoding/charmap",
+			"repository": "https://go.googlesource.com/text",
+			"revision": "cf4986612c83df6c55578ba198316d1684a9a287",
+			"branch": "master",
+			"path": "/encoding/charmap"
+		},
+		{
+			"importpath": "golang.org/x/text/transform",
+			"repository": "https://go.googlesource.com/text",
+			"revision": "cf4986612c83df6c55578ba198316d1684a9a287",
+			"branch": "master",
+			"path": "/transform"
+		}
+	]
+}

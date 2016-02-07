@@ -22,13 +22,21 @@ BEGIN TRANSACTION;
 	CREATE INDEX IF NOT EXISTS idx_distritos_nombre
 		ON distritos(nombre);
 
-	CREATE TABLE IF NOT EXISTS centros (
+	CREATE TABLE IF NOT EXISTS distritos_electorales (
 		id INTEGER PRIMARY KEY,
 		distrito_id INTEGER NOT NULL REFERENCES distritos(id),
+		nombre TEXT NOT NULL
+	);
+	CREATE INDEX IF NOT EXISTS idx_distritos_electorales_nombre
+		ON distritos_electorales(nombre);
+
+	CREATE TABLE IF NOT EXISTS centros (
+		id INTEGER PRIMARY KEY,
+		distrito_electoral_id INTEGER NOT NULL REFERENCES distritos_electorales(id),
 		nombre TEXT NOT NULL,
 		direccion TEXT NOT NULL,
 		url TEXT NOT NULL,
-		UNIQUE(distrito_id, nombre, direccion)
+		UNIQUE(distrito_electoral_id, nombre, direccion)
 	);
 
 	CREATE TABLE IF NOT EXISTS juntas (
@@ -43,8 +51,7 @@ BEGIN TRANSACTION;
 		nombre TEXT NOT NULL,
 		apellido_1 TEXT NOT NULL,
 		apellido_2 TEXT NOT NULL,
-		genero INTEGER NOT NULL,
-		distrito_id INTEGER NOT NULL REFERENCES distritos(id)
+		genero INTEGER NOT NULL
 	);
 	CREATE UNIQUE INDEX IF NOT EXISTS idx_personas_cedula
 		ON personas(cedula);
@@ -54,8 +61,8 @@ BEGIN TRANSACTION;
 		junta_id INTEGER NOT NULL REFERENCES juntas(id),
 		UNIQUE(persona_id, junta_id)
 	);
-	CREATE UNIQUE INDEX idx_padron_persona_id
+	CREATE UNIQUE INDEX IF NOT EXISTS idx_padron_persona_id
 		ON padron(persona_id);
-	CREATE INDEX idx_padron_junta_id
+	CREATE INDEX IF NOT EXISTS idx_padron_junta_id
 		ON padron(junta_id);
 COMMIT TRANSACTION;

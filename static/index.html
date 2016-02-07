@@ -2,18 +2,16 @@
 <html lang="es" ng-app="padronApp">
 <head>
   <meta charset="utf-8">
+  <meta name=viewport content="width=device-width, initial-scale=1">
   <title>Consultar padrón electoral</title>
   <link rel="stylesheet" href="css/app.css">
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.9.0/ui-bootstrap-tpls.min.js"></script>
-  <script src="js/controllers.js"></script>
 
   <meta property="og:title" content="Consultar padrón electoral">
   <meta property="og:type" content="website">
   <meta property="og:description" content="¿Ya sabe adónde votar? Consulte aquí, con su número de cédula, la mesa donde debe presentarse.">
-  <meta property="og:url" content="http://votocr.org/">
+  <meta property="og:url" content="https://votocr.org/">
   <meta property="og:image" content="http://softwarelibre.ucr.ac.cr/archivos/votocr.png">
 
   <meta name="twitter:card" content="summary">
@@ -51,8 +49,8 @@
           <legend>Consultar padrón electoral</legend>
 
           <div class="form-group">
-            <label class="col-xs-3 col-s-3 col-md-4 control-label" for="cedula">Cédula</label>
-            <div class="col-xs-6 col-s-6 col-md-5">
+            <label class="col-xs-2 col-s-3 col-md-4 control-label" for="cedula">Cédula</label>
+            <div class="col-xs-10 col-s-6 col-md-5">
               <input id="cedula" name="cedula" type="search"
               placeholder="123456789" class="form-control input-md"
               required="" ng-model="cedula" ng-click="reset()" autofocus />
@@ -62,8 +60,8 @@
           </div>
 
           <div class="form-group">
-            <label class="col-md-4 control-label" for="submit"></label>
-            <div class="col-md-4">
+            <label class="col-xs-2 col-s-3 col-md-4 control-label" for="submit"></label>
+            <div class="col-xs-4 col-s-3 col-md-3">
               <button id="submit" name="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Buscar</button>
             </div>
           </div>
@@ -113,10 +111,13 @@
 <div class="navbar navbar-fixed-bottom">
   <div class="btn-group">
     <button class="btn btn-default disabled">Compartir:</button>
-    <a class="btn btn-default" href="http://www.facebook.com/sharer.php?u=http://votocr.org/&t=VotoCR"><i class="fa fa-thumbs-o-up fa-lg fb"></i></a>
-    <a class="btn btn-default" href="http://twitter.com/share?url=http://votocr.org/&text=VotoCR"><i class="fa fa-twitter fa-lg tw"></i></a>
-    <a class="btn btn-default" href="https://plus.google.com/share?url=http://votocr.org/"><i class="fa fa-google-plus fa-lg google"></i></a>
+    <a class="btn btn-default" href="http://www.facebook.com/sharer.php?u=https://votocr.org/&t=VotoCR"><i class="fa fa-thumbs-o-up fa-lg fb"></i></a>
+    <a class="btn btn-default" href="http://twitter.com/share?url=https://votocr.org/&text=VotoCR"><i class="fa fa-twitter fa-lg tw"></i></a>
+    <a class="btn btn-default" href="https://plus.google.com/share?url=https://votocr.org/"><i class="fa fa-google-plus fa-lg google"></i></a>
   </div>
 </div>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.9.0/ui-bootstrap-tpls.min.js"></script>
+  <script src="js/controllers.js"></script>
 </body>
 </html>
